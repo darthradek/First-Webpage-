@@ -1,0 +1,408 @@
+$primary-color:#1b2a49;
+$click-color:#00909e;
+$secondary-color:#465881;
+
+body{
+padding:0;
+margin:0;
+background-color:$primary-color;
+overflow-x: hidden;
+}
+
+*{
+font-family: 'Amatic SC', cursive;
+}
+
+.fab{
+    color:$click-color;
+  }
+  
+
+#header{
+background-image:url(../pictures/analogride.jpg);
+background-size:cover;
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items: center;
+}
+
+#hexagon_menu{
+background-size:cover;
+height:50vh;
+width:100%;
+background-color:$primary-color;
+}
+
+.menu_nav{
+    width:100%;
+    height:150vh;
+    display:flex;
+    align-items:flex-start;
+    flex-direction:column;
+    background: linear-gradient($primary-color 85%,$secondary-color);
+   
+}
+
+#about_info{
+background-color:$secondary-color;
+width:100%;
+height:110vh;
+}
+
+#footer{
+background: linear-gradient($secondary-color ,$primary-color 90px );
+display:flex;
+justify-content:flex-end;
+flex-direction:column;
+align-items:center;
+width:100%;
+height:50vh;
+margin:0;
+padding:0;
+}
+
+
+.nav_bar{
+width:100%;
+height:10%;
+background-color:$primary-color;
+display:flex;
+align-items:center;
+}
+
+.logo{
+width:5%;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100%;
+color:$click-color;
+}
+
+
+.nav_wrapper{
+height:10vh;
+width:95%;
+display:flex;
+align-items: center;
+justify-content:flex-end;
+}
+.navigation{
+height:10vh;
+width:60%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+.buttons{
+display:flex;
+justify-content:center;
+align-items:center;
+border:none;
+background-color:$primary-color;
+font-size:50px;
+width:30%;
+height:8vh;
+color:$click-color;
+}
+
+@mixin button_hover1($text-color, $primary-color, $border-radius, $display,$border, $transition) {
+color:$text-color;
+background-color:$primary-color;
+border-radius:$border-radius;
+display:$display;
+border:$border;
+transition:$transition;
+}
+.buttons:hover{
+@include button_hover1($primary-color,$click-color, 5px, inline-block, none, all 0.4s ease 0s)
+
+}
+}
+
+.socials{
+width:20%;
+height:100%;
+display:flex;
+align-items: center;
+justify-content: space-evenly;
+color:$click-color;
+@mixin button_hover2($transition, $transform){
+transition:$transition;
+transform:$transform;
+}
+.fa-youtube:hover{
+@include button_hover2(all .1s ease-in-out, scale(1.5) )
+}
+.fa-instagram:hover{
+@include button_hover2(all .1s ease-in-out, scale(1.5) )
+}
+
+.fa-facebook-square:hover{
+@include button_hover2(all .1s ease-in-out, scale(1.5) )
+}
+}
+
+
+.basket_shortcut{
+    width:20%;
+    height:10vh;
+    color:$click-color;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:30px;
+  .cart_value{
+  border:5px $click-color solid;
+  width:10vh;
+  height:5vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size:40px;
+  }
+  
+  .cart_value:hover{
+    color:$primary-color;
+    background-color:$click-color;
+    transition: all 0.4s ease 0s;
+  }
+  
+  .cart_icon{
+    border:5px $click-color solid;
+    width:10vh;
+    height:5vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .cart_icon:hover{
+    color:$primary-color;
+    background-color:$click-color;
+    transition: all 0.4s ease 0s;
+  }
+}
+
+
+
+h1{
+    font-size:80px;
+    color:$click-color;
+    text-shadow:2px 2px 2px black;
+    margin-top:10%;
+}
+
+.fa-sort-down{
+    color:$click-color;
+    text-shadow:4px 4px 6px black;
+}
+
+
+.svg_mountains{
+    width:100%;
+    transform:translateY(-35%);
+}
+
+
+
+
+.hexagons_upper_menu{
+  display:flex;
+  width:100%;
+  height:50%;
+  justify-content:center;
+  align-items:flex-end;
+}
+
+.hexagons_lower_menu{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  height:50vh;
+  width:100%;
+}
+
+$clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+@mixin hex_button ($width, $height,$margin, $clip-path){
+    width:$width;
+    height:$height;
+    margin:$margin;
+    clip-path:$clip-path; 
+    -webkit-clip-path: $clip-path;
+  }
+  
+
+$hexImg: (
+  1: url(../pictures/hexagon1r.jpg),
+  2: url(../pictures/hexagon2r.jpg),
+  3: url(../pictures/hexagon3r.jpg),
+  4: url(../pictures/hexagon4r.jpg),
+  5: url(../pictures/hexagon5r.jpg),
+);
+
+
+
+@for $i from 1 through 5 {
+  .hex_button#{$i}
+  {
+    background-image:map-get($hexImg, $i);
+    background-position:center center;
+    background-size:cover;
+    font-size:80px;
+    color:$click-color;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    @include hex_button(400px, 400px,40px, polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%));
+    &:hover{
+
+      -webkit-filter: grayscale(70%);
+       filter:grayscale(70%);
+       text-decoration:underline; 
+    }
+  }
+  #hexl{
+    text-decoration:none;
+    color:$click-color;
+    text-shadow:2px 3px black;
+  }
+}
+
+
+.content_section{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+  }
+    .movie_player{
+      width:60%;
+      height:70%;
+      display:flex;
+      justify-content:space-evenly;
+      align-items:center;
+      flex-direction:column;
+      border-radius:20px;
+      
+      box-shadow:15px 15px 15px rgba($color: #000000, $alpha: 0.5);
+    }
+  
+    .about_banner{
+      width:25%;
+      height:70%;
+      font-size:20px;
+      color:$click-color;
+      background-color:$primary-color;
+      margin-right:30px;
+      box-shadow:black 4px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items: center;
+      border-radius:20px;
+      box-shadow:10px 10px 10px rgba($color: #000000, $alpha: 0.5);
+  
+      .content-header {
+        position: fixed;
+        transform: translateY(50px);
+        width: inherit;
+        z-index: 1030;
+        padding: 12px 15px 12px 15px;
+        transition: transform 1s linear;
+      }
+
+      h1{
+          font-size:40px;
+      }
+      p{
+        margin:25px;
+      }
+      
+      .heading{
+        width:100%;
+        height:auto;
+        display:flex;
+        justify-content: center;
+        font-size:220px;
+      }
+      .more_info{
+        width:30%;
+        height:15%;
+        margin:30px;
+        color:$primary-color;
+        background-color:$click-color;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        border-radius:20px;
+      }
+      .more_info:hover{
+        color:$click-color;
+        background:$primary-color;
+        border-radius: 10px;
+        transition: all 0.2s ease 0s;
+      }
+    }  
+
+
+
+
+
+.footer_banner{
+    width:100%;
+    height:40%;
+    display:flex;
+    color:$click-color;
+    font-size:20px;
+    justify-content:center;
+    align-items:center;
+    margin-top:120px;
+  }
+  
+  .footer_container{
+    width:80%;
+    height:60%;
+    display:flex;
+  }
+    .footer_element{
+      width:25%;
+      height:80%;
+      border:2px $click-color solid;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      align-items:center;
+      font-size:15px;
+      color:$click-color;
+    }
+    .footer_element_socials{
+        width:25%;
+        height:80%;
+        border:2px $click-color solid;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        font-size:15px;
+        color:$click-color;
+      }
+    
+    
+    .footer_socials{
+      height:auto;
+      width:25%;
+      font-size:20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .headings{
+      margin-top:20px;
+    }
+
+
+
+    
